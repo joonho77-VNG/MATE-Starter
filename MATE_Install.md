@@ -1,50 +1,39 @@
 === BEGIN MATE INSTALL ===
 
-You are about to set up the MATE multi-agent swarm harness in a new project repo.
-The user will provide their new (empty) GitHub repo URL. Do everything below in order.
+You are setting up the MATE multi-agent swarm harness in this project.
+You are already running inside the user's project folder — that is the permanent working directory.
+Do NOT clone anywhere else. Work entirely in the current directory.
 Do NOT write any product/application code — only install the harness.
 
 ## Step 1 — Confirm the repo URL
 
-Ask the user: "What is your new GitHub repo URL?" if they haven't already provided it.
-Extract the owner and repo name from the URL.
+Ask the user: "What is your GitHub repo URL?" if they haven't already provided it.
 
-## Step 2 — Clone the MATE Starter template
+## Step 2 — Pull the MATE Starter files into this folder
 
-Clone the MATE Starter into a local temp folder:
+Clone the MATE Starter into a temp location, then copy its files into the current directory:
 
   git clone https://github.com/joonho77-VNG/MATE-Starter.git C:\Temp\MATE-Starter-src
 
-If C:\Temp\MATE-Starter-src already exists, delete it first and re-clone so it's fresh.
-
-## Step 3 — Clone the user's new repo
-
-Clone their repo into a temp folder:
-
-  git clone <their-repo-url> C:\Temp\MATE-New-Project
-
-## Step 4 — Copy all starter files into their repo
-
-Copy everything from C:\Temp\MATE-Starter-src into C:\Temp\MATE-New-Project,
+Copy everything from C:\Temp\MATE-Starter-src into the current directory,
 preserving folder structure. Include hidden folders (.mate, .claude).
 Do NOT copy the .git folder from the starter.
 
-## Step 5 — Commit and push
+## Step 3 — Connect to the user's GitHub repo and push
 
-Inside C:\Temp\MATE-New-Project:
+Initialize git if not already done, set the remote, and push:
 
+  git init
+  git remote add origin <their-repo-url>
   git add -A
   git commit -m "feat: install MATE harness — agents, dashboard, shared state"
-  git push origin main
+  git push -u origin main
 
-If the default branch is not main, use the correct branch name.
+If the remote already exists, use: git remote set-url origin <their-repo-url>
 
-## Step 6 — Confirm and hand off
+## Step 4 — Run the MATE Bootstrap interview
 
-Tell the user:
-  "✅ MATE is installed in your repo. Now let's set up your project."
-
-Then immediately run the MATE Bootstrap interview (Phase 1 of MATE_Bootstrap.md):
+Tell the user: "✅ MATE is installed. Now let's set up your project."
 
 Ask:
 1. What are you building, in one sentence?
@@ -58,27 +47,19 @@ Then branch follow-up questions by project type:
 - Library/API: public surface, consumers, versioning/compat, language + packaging?
 
 Play back a compact summary (Goal / Out-of-scope / Tech stack / Domain terms) and get confirmation.
-Then write the finalized CLAUDE.md into C:\Temp\MATE-New-Project and push it.
+Then write the finalized CLAUDE.md into the current directory and push it.
 
-## Step 7 — Clone to permanent location and start Mission Control
+## Step 5 — Start Mission Control
 
-Ask the user: "Where do you want this project cloned on your machine?
-For example: C:\Projects\MyApp or ~/projects/my-app"
+Start the dashboard as a background process from the current directory:
 
-Once they answer, clone their repo to that path:
+  node dashboard/server.js
 
-  git clone <their-repo-url> <their-chosen-path>
-
-Then start the Mission Control dashboard from that permanent location:
-
-  node <their-chosen-path>/dashboard/server.js
-
-Confirm it started successfully, then tell the user:
+Run it in the background so it doesn't block the session.
+Confirm it started, then tell the user:
 
   "✅ Mission Control is live at http://127.0.0.1:4317 — open that in your browser.
 
-  Your project is cloned at: <their-chosen-path>
-  Open that folder in Claude Code as your working session.
   To begin building, tell Claude: 'plan the build' and the swarm takes over."
 
 === END MATE INSTALL ===
