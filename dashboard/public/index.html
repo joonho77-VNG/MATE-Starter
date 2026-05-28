@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MATE Mission Control</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo-dot"></span> MATE <strong>MISSION CONTROL</strong></div>
+    <div class="status"><span id="conn" class="conn">● connecting</span><span id="clock" class="clock"></span></div>
+  </header>
+
+  <section class="agents" id="agents"></section>
+
+  <main>
+    <section class="board">
+      <h2>Task Board</h2>
+      <div class="lanes" id="lanes"></div>
+    </section>
+    <aside class="feed-wrap">
+      <h2>Live Activity</h2>
+      <ul class="feed" id="feed"></ul>
+    </aside>
+  </main>
+
+  <footer>
+    <section class="panel"><h3>🎨 Designer Decisions</h3><ul id="wiki"></ul></section>
+    <section class="panel"><h3>🔨 Coder · Changed Files</h3><ul id="changes"></ul></section>
+    <section class="panel"><h3>🧪 QA</h3><ul id="qa"></ul></section>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
