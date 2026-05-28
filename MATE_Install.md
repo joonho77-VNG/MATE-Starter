@@ -60,29 +60,25 @@ Then branch follow-up questions by project type:
 Play back a compact summary (Goal / Out-of-scope / Tech stack / Domain terms) and get confirmation.
 Then write the finalized CLAUDE.md into C:\Temp\MATE-New-Project and push it.
 
-## Step 7 — Final instructions to the user
+## Step 7 — Clone to permanent location and start Mission Control
 
-IMPORTANT: Do NOT start the dashboard or run any servers in this session.
-The files are currently in a temporary install folder (C:\Temp\MATE-New-Project) that is not
-the user's permanent working directory. Starting anything from here would be misleading.
+Ask the user: "Where do you want this project cloned on your machine?
+For example: C:\Projects\MyApp or ~/projects/my-app"
 
-Tell the user exactly this:
+Once they answer, clone their repo to that path:
 
-  "✅ Your MATE project is ready at: <their-repo-url>
+  git clone <their-repo-url> <their-chosen-path>
 
-  This install session is done — the temp files here are throwaway.
+Then start the Mission Control dashboard from that permanent location:
 
-  Next steps (do these in order):
-  1. Close or ignore this session.
-  2. Clone your repo to wherever you actually want to work:
-       git clone <their-repo-url>
-  3. Open that folder in Claude Code as a new session.
-  4. In that new session, start Mission Control:
-       node dashboard/server.js  →  http://127.0.0.1:4317
-  5. To begin building, tell Claude: 'plan the build' and the swarm takes over.
+  node <their-chosen-path>/dashboard/server.js
 
-  Do not run the dashboard from this session — it would point at the wrong folder."
+Confirm it started successfully, then tell the user:
 
-Then STOP. Do not start any servers, open any URLs, or do anything further.
+  "✅ Mission Control is live at http://127.0.0.1:4317 — open that in your browser.
+
+  Your project is cloned at: <their-chosen-path>
+  Open that folder in Claude Code as your working session.
+  To begin building, tell Claude: 'plan the build' and the swarm takes over."
 
 === END MATE INSTALL ===
