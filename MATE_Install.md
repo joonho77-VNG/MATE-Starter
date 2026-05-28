@@ -62,11 +62,27 @@ Then write the finalized CLAUDE.md into C:\Temp\MATE-New-Project and push it.
 
 ## Step 7 — Final instructions to the user
 
-Tell the user:
-  "Your MATE project is ready. Here's how to run it:
+IMPORTANT: Do NOT start the dashboard or run any servers in this session.
+The files are currently in a temporary install folder (C:\Temp\MATE-New-Project) that is not
+the user's permanent working directory. Starting anything from here would be misleading.
 
-  1. Clone your repo locally (if you haven't already) and open it in Claude Code.
-  2. Start Mission Control: node dashboard/server.js → http://127.0.0.1:4317
-  3. To begin building: tell Claude 'plan the build' and the swarm takes over."
+Tell the user exactly this:
+
+  "✅ Your MATE project is ready at: <their-repo-url>
+
+  This install session is done — the temp files here are throwaway.
+
+  Next steps (do these in order):
+  1. Close or ignore this session.
+  2. Clone your repo to wherever you actually want to work:
+       git clone <their-repo-url>
+  3. Open that folder in Claude Code as a new session.
+  4. In that new session, start Mission Control:
+       node dashboard/server.js  →  http://127.0.0.1:4317
+  5. To begin building, tell Claude: 'plan the build' and the swarm takes over.
+
+  Do not run the dashboard from this session — it would point at the wrong folder."
+
+Then STOP. Do not start any servers, open any URLs, or do anything further.
 
 === END MATE INSTALL ===
